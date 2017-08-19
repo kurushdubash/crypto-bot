@@ -37,11 +37,14 @@ SUCCESS = "success"
 # 		print key 
 # 		print str(value) + '\n'
 
-def track_currency_value():
-	market_summaries = Exchange.get_market_summaries()[RESULT]
-	for currency in market_summaries:
-		currency_in_market = MarketSummary(currency);
-		DB.update(currency_in_market)
-		break
+# def track_currency_value():
+# 	market_summaries = Exchange.get_market_summaries()[RESULT]
+# 	for currency in market_summaries:
+# 		currency_in_market = MarketSummary(currency);
+# 		DB.update(currency_in_market)
+# 		break
 
-track_currency_value()
+# track_currency_value()
+# DB.run_command("CREATE TABLE test (laugh int);");
+DB.run_command("DROP TABLE test;");
+# DB.check_changelog()
