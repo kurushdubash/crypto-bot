@@ -1,5 +1,5 @@
 from datetime import datetime
-from constants import currency_names
+from constants import *
 
 class Currency(object):
 	def __init__(self, dictionary):

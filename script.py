@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from bittrex import bittrex
 from bittrex_utils import *
+from constants import *
 from database import DataBase
 
 api_key = "8a3428dc510440228172f81f7d31f5bf "
