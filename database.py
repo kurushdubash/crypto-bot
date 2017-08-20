@@ -1,11 +1,10 @@
 import MySQLdb
 from bittrex_utils import *
-import time
 from datetime import datetime
 
 CHANGELOG_INSERT = """INSERT INTO changelog (`sql_command`, `executed`, `created_date`) VALUES (%s, %s, %s);"""
 
-MARKET_DATA_INSERT = """INSERT INTO market_data (`market_name`, `last`, `timestamp`, `low`, `high`, `volume`, `bid`, `ask`, `inserted`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+MARKET_DATA_INSERT = """INSERT INTO market_data (`market_name`, `full_name`, `last`, `usd`, `timestamp`, `low`, `high`, `volume`, `bid`, `ask`, `inserted`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
 class DataBase(object):
     def __init__(self, host, user, passwd, db):
@@ -35,9 +34,19 @@ class DataBase(object):
     def update(self, object):
         if(isinstance(object, MarketSummary)):
             self._update_db_with_currency(object)
+        if(isinstance(object, list)):
+            if(len(object) > 0):
+                if(isinstance(object[0], MarketSummary)):
+                    self._update_db_with_currencies(object)
 
     def _update_db_with_currency(self, obj):
-        data = (obj.market_name, obj.last, obj.timestamp, obj.low, obj.high, obj.volume, obj.bid, obj.ask, datetime.now())
+        data = ((obj.market_name, obj.market_name_full, obj.last, obj.usd, obj.timestamp, obj.low, obj.high, obj.volume, obj.bid, obj.ask, datetime.now()))
         self.cur.execute(MARKET_DATA_INSERT, data)
         self.database.commit()
-        
+
+    def _update_db_with_currencies(self, objs):
+        data = []
+        for obj in objs:
+            data.append((obj.market_name, obj.market_name_full, obj.last, obj.usd, obj.timestamp.strftime("%Y-%m-%dT%H:%M:%S"), obj.low, obj.high, obj.volume, obj.bid, obj.ask, datetime.now()))
+        self.cur.executemany(MARKET_DATA_INSERT, data)
+        self.database.commit()

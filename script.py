@@ -22,29 +22,20 @@ MESSAGE = "message"
 RESULT = "result"
 SUCCESS = "success"
 
+def track_currency_value():
+	market_summaries = Exchange.get_market_summaries()[RESULT]
+	currencies = []
+	bitcoin_usd_value = float(0)
+	for currency in market_summaries:
+		if(currency["MarketName"].split("-")[0] == "BTC"):
+			currency_in_market = MarketSummary(currency);
+			currencies.append(currency_in_market)
 
-# currs = Exchange.get_market_summaries()["result"]
-# currs_objs = []
-# for curr in currs:
-# 	currs_objs.append(MarketSummary(curr))
-# for item in currs_objs:
-# 	print str(item.market_name) + " : " + str(item.last)
+		if(currency["MarketName"].split("-")[0] == "USDT" \
+			and currency["MarketName"].split("-")[1] == "BTC"):
+			bitcoin_usd_value = float(currency["Last"])
+	for item in currencies:
+		item.usd = bitcoin_usd_value * item.last
+	DB.update(currencies)
 
-# print ""
-
-# for a in Exchange.get_marketsummary("BTC-ETC")["result"]: 
-# 	for key, value in a.iteritems():
-# 		print key 
-# 		print str(value) + '\n'
-
-# def track_currency_value():
-# 	market_summaries = Exchange.get_market_summaries()[RESULT]
-# 	for currency in market_summaries:
-# 		if(currency["MarketName"].split("-")[0] == "BTC"):
-# 			print currency["Last"]
-# 			currency_in_market = MarketSummary(currency);
-# 			print currency_in_market.last
-# 			# DB.update(currency_in_market)
-# 			break
-#
-# track_currency_value()
+track_currency_value()

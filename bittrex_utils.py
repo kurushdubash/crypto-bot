@@ -1,7 +1,5 @@
-from decimal import Decimal
 from datetime import datetime
 from constants import currency_names
-
 
 class Currency(object):
 	def __init__(self, dictionary):
@@ -14,20 +12,20 @@ class Currency(object):
 		self.base_address =dictionary["BaseAddress"]
 
 class MarketSummary(object):
-	def __init__(self, dictionary, BTC_value):
+	def __init__(self, dictionary, BTC_value=0):
 		self.market_name = dictionary["MarketName"]
-		self.market_name_full = currency_names(self.market_name.split('-')[1])
-		self.high = Decimal(dictionary["High"])
-		self.low = Decimal(dictionary["Low"])
-		self.volume = Decimal(dictionary["Volume"])
-		self.last = Decimal(dictionary["Last"])
-		self.base_volume = Decimal(dictionary["BaseVolume"])
-		date = datetime.strptime(dictionary["TimeStamp"], "%Y-%B-%dT%H:%M:%S.%M").date()
+		self.market_name_full = currency_names[self.market_name.split('-')[1]]
+		self.high = float(dictionary["High"])
+		self.low = float(dictionary["Low"])
+		self.volume = float(dictionary["Volume"])
+		self.last = float(dictionary["Last"])
+		self.base_volume = float(dictionary["BaseVolume"])
+		date = datetime.strptime(dictionary["TimeStamp"].split(".")[0], "%Y-%m-%dT%H:%M:%S")
 		self.timestamp = date
-		self.bid = Decimal(dictionary["Bid"])
-		self.ask = Decimal(dictionary["Ask"])
-		self.open_buy_orders = Decimal(dictionary["OpenBuyOrders"])
-		self.open_sell_orders = Decimal(dictionary["OpenSellOrders"])
-		self.prevday = Decimal(dictionary["PrevDay"])
+		self.bid = float(dictionary["Bid"])
+		self.ask = float(dictionary["Ask"])
+		self.open_buy_orders = float(dictionary["OpenBuyOrders"])
+		self.open_sell_orders = float(dictionary["OpenSellOrders"])
+		self.prevday = float(dictionary["PrevDay"])
 		self.created = dictionary["Created"]
-		self.usd = Decimal(BTC_value) * self.last 
+		self.usd = float(BTC_value) * self.last
