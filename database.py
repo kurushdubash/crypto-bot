@@ -5,8 +5,7 @@ from datetime import datetime
 
 CHANGELOG_INSERT = """INSERT INTO changelog (`sql_command`, `executed`, `created_date`) VALUES (%s, %s, %s);"""
 
-# # Use all the SQL you like
-# cur.execute("SELECT * FROM YOUR_TABLE_NAME")
+MARKET_DATA_INSERT = """INSERT INTO market_data (`market_name`, `last`, `timestamp`, `low`, `high`, `volume`, `bid`, `ask`, `inserted`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
 class DataBase(object):
     def __init__(self, host, user, passwd, db):
@@ -18,14 +17,14 @@ class DataBase(object):
         self.cur = self.database.cursor()
 
     def run_command(self, command):
-        # try:
-        # print self.cur.execute(command)
-        data = ("'" + command +"'", True, datetime.now())
-        self.cur.execute(CHANGELOG_INSERT, data)
-        self.database.commit()
-        # except Exception as e:
-        #     raise e
-        #     print "Failed to execute command : " + command
+        try:
+            self.cur.execute(command)
+            data = ("'" + command +"'", True, datetime.now())
+            self.cur.execute(CHANGELOG_INSERT, data)
+            self.database.commit()
+        except Exception as e:
+            print "Failed to execute command : " + command
+            raise e
 
     def check_changelog(self):
         self.cur.execute("SELECT * FROM changelog WHERE executed=0")
@@ -37,13 +36,8 @@ class DataBase(object):
         if(isinstance(object, MarketSummary)):
             self._update_db_with_currency(object)
 
-    def _update_db_with_currency(self, object):
-        values = ""
-        for key, value in vars(object).iteritems():
-            if not key.startswith("__"):
-                values += str(value) + ", "
-        values = values[:-2]
-        print values
-        query = "INSERT INTO market_currencies VALUES (" + values + ");"
-        print query
-        # cur.execute(query)
+    def _update_db_with_currency(self, obj):
+        data = (obj.market_name, obj.last, obj.timestamp, obj.low, obj.high, obj.volume, obj.bid, obj.ask, datetime.now())
+        self.cur.execute(MARKET_DATA_INSERT, data)
+        self.database.commit()
+        
