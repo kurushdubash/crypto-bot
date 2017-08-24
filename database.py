@@ -1,6 +1,6 @@
 import MySQLdb
 from bittrex_utils import *
-from constants import *
+import constants as c
 from datetime import datetime
 
 CHANGELOG_INSERT = """INSERT INTO changelog (`sql_command`, `executed`, `created_date`) VALUES (%s, %s, %s);"""
@@ -23,8 +23,8 @@ class DataBase(object):
             self.cur.execute(CHANGELOG_INSERT, data)
             self.database.commit()
         except Exception as e:
-            log.error("Failed to run command: " + command)
-            log.error(e)
+            c.log.error("Failed to run command: " + command)
+            c.log.error(e)
 
     def check_changelog(self):
         self.cur.execute("SELECT * FROM changelog WHERE executed=0")
@@ -41,8 +41,9 @@ class DataBase(object):
                     if(isinstance(object[0], MarketSummary)):
                         self._update_db_with_currencies(object)
         except Exception as e:
-            log.error("Failed to find suitable type to upload to the database")
-            log.error(e)
+            c.log.error("Failed to find suitable type to upload to the database")
+            c.log.error(object)
+            c.log.error(e)
 
     def _update_db_with_currency(self, obj):
         try:
@@ -50,16 +51,17 @@ class DataBase(object):
             self.cur.execute(MARKET_DATA_INSERT, data)
             self.database.commit()
         except Exception as e:
-            log.error("Failed to update the db with currency : " + obj.market_name_full)
-            log.error(e)
+            c.log.error("Failed to update the db with currency : " + obj.market_name_full)
+            c.log.error(e)
 
     def _update_db_with_currencies(self, objs):
         try:
             data = []
             for obj in objs:
-                data.append((obj.market_name, obj.market_name_full, obj.last, obj.usd, obj.timestamp.strftime("%Y-%m-%dT%H:%M:%S"), obj.low, obj.high, obj.volume, obj.bid, obj.ask, datetime.now()))
+                time_now = datetime.now()
+                data.append((obj.market_name, obj.market_name_full, obj.last, obj.usd, obj.timestamp.strftime("%Y-%m-%dT%H:%M:%S"), obj.low, obj.high, obj.volume, obj.bid, obj.ask, time_now))
             self.cur.executemany(MARKET_DATA_INSERT, data)
             self.database.commit()
         except Exception as e:
-            log.error("Failed to update the db with currencies : " + objs)
-            log.error(e)
+            c.log.error("Failed to update the db with currencies : " + objs)
+            c.log.error(e)

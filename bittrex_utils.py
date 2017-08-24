@@ -1,4 +1,5 @@
-from constants import *
+from datetime import datetime
+import constants as c
 
 class Currency(object):
 	def __init__(self, dictionary):
@@ -13,7 +14,7 @@ class Currency(object):
 class MarketSummary(object):
 	def __init__(self, dictionary, BTC_value=0):
 		self.market_name = dictionary["MarketName"]
-		self.market_name_full = currency_names[self.market_name.split('-')[1]]
+		self.market_name_full = c.currency_names[self.market_name.split('-')[1]]
 		self.high = float(dictionary["High"])
 		self.low = float(dictionary["Low"])
 		self.volume = float(dictionary["Volume"])
