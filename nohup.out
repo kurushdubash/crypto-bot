@@ -1,0 +1,168 @@
+Exception in thread Thread-478:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36feff290>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-480:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36effba90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-481:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36efe6b90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-482:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36fed6f50>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-483:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36f0204d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-484:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36f020d90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+
+Exception in thread Thread-485:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 1073, in run
+    self.function(*self.args, **self.kwargs)
+  File "fetch.py", line 23, in track_currency_value
+    market_summaries = Exchange.get_market_summaries()[c.RESULT]
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 131, in get_market_summaries
+    return self.api_query('getmarketsummaries')
+  File "/usr/local/lib/python2.7/dist-packages/bittrex/bittrex.py", line 94, in api_query
+    headers={"apisign": hmac.new(self.api_secret.encode(), request_url.encode(), hashlib.sha512).hexdigest()}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+ConnectionError: HTTPSConnectionPool(host='bittrex.com', port=443): Max retries exceeded with url: /api/v1.1/public/getmarketsummaries (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fd36feb26d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+

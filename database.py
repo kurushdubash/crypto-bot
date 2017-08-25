@@ -7,6 +7,8 @@ CHANGELOG_INSERT = """INSERT INTO changelog (`sql_command`, `executed`, `created
 
 MARKET_DATA_INSERT = """INSERT INTO market_data (`market_name`, `full_name`, `last`, `usd`, `timestamp`, `low`, `high`, `volume`, `bid`, `ask`, `inserted`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
+GET_ROWS_BY_FULL_NAME = """SELECT full_name, last, usd, market_name FROM market_data WHERE full_name=%s AND inserted > DATEADD(HOUR, -%s, GETDATE()) ORDER BY inserted DESC"""
+
 class DataBase(object):
     def __init__(self, host, user, passwd, db):
         self.host = host
@@ -65,3 +67,9 @@ class DataBase(object):
         except Exception as e:
             c.log.error("Failed to update the db with currencies : " + str(objs))
             c.log.error(e)
+
+    def get_data(self, coin, hours):
+	    data = (coin, hours)
+	    self.cur.execute(GET_ROWS_BY_FULL_NAME, data)
+	    for (full_name, last, usd, market_name) in self.cur:
+		    print str(full_name) + ' ' + str(last) + str(usd) + str(market_name)
