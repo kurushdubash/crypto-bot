@@ -63,5 +63,5 @@ class DataBase(object):
             self.cur.executemany(MARKET_DATA_INSERT, data)
             self.database.commit()
         except Exception as e:
-            c.log.error("Failed to update the db with currencies : " + objs)
+            c.log.error("Failed to update the db with currencies : " + str(objs))
             c.log.error(e)

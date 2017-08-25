@@ -29,3 +29,6 @@ class MarketSummary(object):
 		self.prevday = float(dictionary["PrevDay"])
 		self.created = dictionary["Created"]
 		self.usd = float(BTC_value) * self.last
+
+	def __str__(self):
+		return "market_name: " + str(self.market_name) +"\n"  + "market_name_full: " + str(self.market_name_full) + "\n" + "high: " + str(self.high) + "\n" + "low: " + str(self.low) + "\n" + "volume: " + str(self.volume) + "\n" + "last: " + str(self.last) + "\n" + "base_volume: " + str(self.base_volume) + "\n" + "timestamp: " + str(self.timestamp) + "\n" + "bid: " + str(self.bid) + "\n" + "ask: " + str(self.ask) + "\n" + "open_buy_orders: " + str(self.open_buy_orders) + "\n" + "open_sell_orders: " + str(self.open_sell_orders) + "\n" + "prevday: " + str(self.prevday) + "\n" + "created: " + str(self.created) + "\n" + "usd: " + str(self.usd) + "\n"
