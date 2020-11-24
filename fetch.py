@@ -4,16 +4,16 @@ from database import DataBase
 from bittrex_utils import Currency, MarketSummary
 import threading
 
-api_key = "8a3428dc510440228172f81f7d31f5bf"
-api_secret = "63b790f5c5ef44c3978620bb1ecca13f"
+api_key = ""
+api_secret = ""
 
-api_key2 = "5e5ce42fefd54684839945e6c4bba6b0"
-api_secret2 = "39b25eb11a9240eab984b0f2a6074e02"
+api_key2 = ""
+api_secret2 = ""
 Exchange = bittrex.Bittrex(api_key, api_secret)
 
-DB = DataBase(host="104.236.177.161",    # your host, usually localhost
+DB = DataBase(host="",    # your host, usually localhost
                      user="kurush",         # your username
-                     passwd="=2@fcM6LT6Vg=Exe",  # your password
+                     passwd="",  # your password
                      db="crypto")        # name of the data base
 
 import constants as c
